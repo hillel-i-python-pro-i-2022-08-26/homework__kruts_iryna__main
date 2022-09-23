@@ -26,7 +26,9 @@ def return_poem():
 @app.route("/generate_users/")
 def generate_users():
     new_gen = generate_list_of_person(random.randint(1, 100))
-    return render_template("generate_users.html", new_gen=new_gen, title="generate_users")
+    return render_template(
+        "generate_users.html", new_gen=new_gen, title="generate_users"
+    )
 
 
 @app.route("/space/")
