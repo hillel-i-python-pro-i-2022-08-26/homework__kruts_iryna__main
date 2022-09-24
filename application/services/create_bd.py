@@ -8,7 +8,8 @@ item_list = [(1, f'{fake.name()}', 2), (2, fake.name(), 33), (3, f'{fake.name()}
              (5, f'{fake.name()}', 2), (6, fake.name(), 1222)]
 
 
-def bd_creator() -> List[List, Tuple]:
+def bd_creator() -> List:
+    # -> List[List, Tuple]
     """
     Функция для создания и минимальной работы с БД
     :return: данные из БД [[значение где phone_value>200], первое значение]
@@ -36,8 +37,5 @@ def bd_creator() -> List[List, Tuple]:
         cursor.execute("""
                 DROP TABLE phones;
                 """)
-        print(type(result_some))
-        return [result, result_some]
+        return result
 
-
-print(bd_creator())
