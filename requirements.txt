@@ -1,0 +1,14 @@
+#core
+Flask==2.2.2
+#fake name
+faker==14.2.0
+# working with Api requests
+django-request~=1.6.1
+requests~=2.28.1
+# [ code_style] - [BEGIN]
+# pre-commit codeformatter pyupgrade
+pre-commit==2.20.0
+#Autoformatter
+black==22.8.0
+#Check codestyle
+flake8==5.0.4

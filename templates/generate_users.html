@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>User list</h1>
+<ol>
+    {% for i in new_gen %}
+    {% for j in i %}
+    <li> {{ j }}</li>
+    {% endfor %}
+    {% endfor %}
+</ol>
+{% endblock %}
