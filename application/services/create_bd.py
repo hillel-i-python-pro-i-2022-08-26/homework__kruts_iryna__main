@@ -1,5 +1,7 @@
 import sqlite3
-from typing import List, Tuple
+import pathlib
+from pathlib import Path
+from typing import List
 
 from faker import Faker
 
@@ -15,7 +17,6 @@ item_list = [
 
 
 def bd_creator() -> List:
-    # -> List[List, Tuple]
     """
     Функция для создания и минимальной работы с БД
     :return: данные из БД [[значение где phone_value>200], первое значение]
@@ -24,10 +25,10 @@ def bd_creator() -> List:
         cursor = bd_connection.cursor()
         cursor.execute(
             """CREATE TABLE IF NOT EXISTS phones(
-        phone INTEGER PRIMARY KEY AUTOINCREMENT,
-        contact_name TEXT,
-        phone_value INTEGER
-        )
+                 phone INTEGER PRIMARY KEY AUTOINCREMENT,
+                 contact_name TEXT,
+                 phone_value INTEGER
+            )
         """
         )
         cursor.executemany(
@@ -40,7 +41,7 @@ def bd_creator() -> List:
             item_list,
         )
         read_first_row = cursor.execute("SELECT * FROM phones")
-        result_some = read_first_row.fetchone()
+        result_some = read_first_row.fetchone()  # noqa: F841
         cursor.execute("UPDATE phones SET phone_value=phone_value+500")
         read_all_bd = cursor.execute("SELECT * FROM phones WHERE phone_value > 100")
         result = read_all_bd.fetchall()
@@ -51,3 +52,4 @@ def bd_creator() -> List:
                 """
         )
         return result
+
