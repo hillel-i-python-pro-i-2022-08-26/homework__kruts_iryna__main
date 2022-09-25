@@ -1,6 +1,4 @@
 import sqlite3
-import pathlib
-from pathlib import Path
 from typing import List
 
 from faker import Faker
@@ -52,4 +50,3 @@ def bd_creator() -> List:
                 """
         )
         return result
-
