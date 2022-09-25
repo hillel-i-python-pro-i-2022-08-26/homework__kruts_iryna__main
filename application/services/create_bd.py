@@ -24,9 +24,9 @@ def bd_creator() -> List:
         cursor = bd_connection.cursor()
         cursor.execute(
             """CREATE TABLE IF NOT EXISTS phones(
-        phone INTEGER PRIMARY KEY AUTOINCREMENT,
-        contact_name TEXT,
-        phone_value INTEGER
+                 phone INTEGER PRIMARY KEY AUTOINCREMENT,
+                 contact_name TEXT NOT NULL,
+                 phone_value INTEGER NOT NULL
         )
         """
         )
