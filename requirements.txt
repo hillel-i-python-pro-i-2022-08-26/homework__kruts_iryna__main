@@ -12,3 +12,4 @@ black==22.8.0
 # Check codestyle
 flake8==5.0.4
 # [code_style]-[END]
+Flask~=2.1.1
