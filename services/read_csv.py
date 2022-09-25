@@ -1,6 +1,7 @@
 import csv
 import pathlib
 
+
 def calculate_csv() -> str:
     """
     Функция для считывания файла csv
