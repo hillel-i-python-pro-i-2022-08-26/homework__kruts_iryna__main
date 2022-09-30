@@ -10,17 +10,13 @@ def create_new_user():
     with sqlite3.connect('phones1.sqlite') as bd_con:
         cur = bd_con.cursor()
         cur.execute("""
-            INSERT INTO phones(phone, contact_name, phone_value)
-            VALUES(:phone, :contact_name, :phone_value)
-        """, (88, fake.name(), 3000222)
+            INSERT INTO phones(contact_name, phone_value)
+            VALUES(:contact_name, :phone_value)
+        """, (fake.name(), 3000222)
         )
         cur.execute("SELECT * FROM phones")
         f = cur.fetchall()
     return f
-
-def delete_user():
-
-
 
 print(create_new_user())
 
