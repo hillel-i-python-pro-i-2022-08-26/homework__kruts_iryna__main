@@ -1,4 +1,6 @@
+
 import sqlite3
+
 
 def bd_creator() -> None:
     """
@@ -16,4 +18,3 @@ def bd_creator() -> None:
         """
         )
     return None
-

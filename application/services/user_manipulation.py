@@ -1,33 +1,46 @@
 import sqlite3
 
 from faker import Faker
+import random
 
 
 fake = Faker()
 
+
 def create_new_user():
-    with sqlite3.connect('phones.sqlite') as bd_con:
+    with sqlite3.connect("phones.sqlite") as bd_con:
         cur = bd_con.cursor()
-        cur.execute("""
+        cur.execute(
+            """
             INSERT INTO phones(ContactName, PhoneValue)
             VALUES(:ContactName, :PhoneValue)
-        """, (fake.name(), 3000222)
+        """,
+            (fake.name(), f"+38093{random.randint(1000000, 9999999)}"),
         )
         cur.execute("SELECT * FROM phones")
         result = cur.fetchall()
     return result
 
+
 def delete_user(user_id):
-    with sqlite3.connect('phones.sqlite') as bd:
+    with sqlite3.connect("phones.sqlite") as bd:
         cur = bd.cursor()
         cur.execute(f"DELETE FROM phones WHERE PhoneId = {user_id}")
         cur.execute("SELECT * FROM phones")
         result = cur.fetchall()
         return result
 
+
 def update_user(user_name):
-    with sqlite3.connect('phones.sqlite') as bd_conn:
+    with sqlite3.connect("phones.sqlite") as bd_conn:
         cursor = bd_conn.cursor()
-        cursor.execute(f"UPDATE phones SET ContactName={user_name}")
+        cursor.execute(
+            f"UPDATE phones SET ContactName='NOBODY' WHERE ContactName LIKE '{user_name}%'"
+        )
+        cursor.execute("SELECT * FROM phones")
         result = cursor.fetchall()
+        # cursor.execute("DROP TABLE phones")
         return result
+
+
+# print(update_user('M'))
