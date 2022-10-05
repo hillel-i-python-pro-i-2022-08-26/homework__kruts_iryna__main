@@ -22,7 +22,7 @@ def create_new_user():
     return result
 
 
-def delete_user(user_id):
+def delete_user(user_id: int):
     with sqlite3.connect("phones.sqlite") as bd:
         cur = bd.cursor()
         cur.execute(f"DELETE FROM phones WHERE PhoneId = {user_id}")
@@ -31,13 +31,12 @@ def delete_user(user_id):
         return result
 
 
-def update_user(user_name):
+def update_user(user_id: int):
     with sqlite3.connect("phones.sqlite") as bd_conn:
         cursor = bd_conn.cursor()
         cursor.execute(
-            f"UPDATE phones SET ContactName='NOBODY' WHERE ContactName LIKE '{user_name}%'"
+            f"UPDATE phones SET ContactName='NOBODY' WHERE PhoneId LIKE '{user_id}%'"
         )
         cursor.execute("SELECT * FROM phones")
         result = cursor.fetchall()
-        # cursor.execute("DROP TABLE phones")
         return result

@@ -32,9 +32,9 @@ def delete_user_from_bd(user_id):
     # return f"You deleted user by id. The rest user list is {delete_user(user_id)}"
 
 
-@app.route("/update-user/<path:user_name>")
-def update_user_from_bd(user_name):
-    result = update_user(user_name)
+@app.route("/update-user/<int:user_id>")
+def update_user_from_bd(user_id):
+    result = update_user(user_id)
     return render_template("update_user_list.html", result=result, title="Updated List")
 
 
