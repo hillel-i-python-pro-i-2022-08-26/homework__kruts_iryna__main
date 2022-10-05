@@ -1,5 +1,11 @@
 from flask import Flask, render_template
-from application.services import create_bd, show_all_items, show_some_from_bd
+from application.services import (
+    create_bd,
+    show_all_items,
+    show_some_from_bd,
+    delete_user,
+    update_user,
+)
 from application.services import create_new_user
 
 app = Flask("My site")
@@ -20,13 +26,14 @@ def new_users():
 
 
 @app.route("/delete-user/<int:user_id>/")
-def delete_user(user_id):
-    delete_user(user_id)
-    return f"You deleted user by id. The rest user list is {delete_user(user_id)}"
+def delete_user_from_bd(user_id):
+    result = delete_user(user_id)
+    return render_template("delete_user.html", rest_list=result, title="New List")
+    # return f"You deleted user by id. The rest user list is {delete_user(user_id)}"
 
 
 @app.route("/update-user/<path:user_name>")
-def update_user(user_name):
+def update_user_from_bd(user_name):
     result = update_user(user_name)
     return render_template("update_user_list.html", result=result, title="Updated List")
 

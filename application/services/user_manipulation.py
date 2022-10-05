@@ -41,6 +41,3 @@ def update_user(user_name):
         result = cursor.fetchall()
         # cursor.execute("DROP TABLE phones")
         return result
-
-
-# print(update_user('M'))
